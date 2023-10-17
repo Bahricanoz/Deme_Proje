@@ -1,0 +1,31 @@
+﻿@model EntityLayer.Concrete.Category
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mt-3">
+    <h1>Kategori Ekleme Sayfası</h1>
+</div>
+<form method="post">
+    <table class="table table-bordered table-striped mt-3">
+        <tr>
+            <td>
+                <label>Kategori Adı:</label>
+            </td>
+            <td>
+                <input type="text" name="CategoryName" class="form-control" />
+                <div style="color:red">
+                    @Html.ValidationMessageFor(x=>x.CategoryName)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button class="btn btn-info">Kategori Ekle</button>
+            </td>
+        </tr>
+    </table>
+</form>
+

@@ -1,0 +1,38 @@
+﻿@using EntityLayer.Concrete;
+@model List<Customer>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered mt-3">
+    <tr>
+        <th>#</th>
+        <th>İsim</th>
+        <th>Şehir</th>
+        <th>Meslek</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @foreach(var x in Model)
+        {
+            <tr>
+                <td>@x.Id</td>
+                <td>@x.Name</td>
+                <td>@x.Country</td>
+                <td>@x.Job.Name</td>
+                <td>
+                    <a href="/Customer/DeleteCustomer/@x.Id" class="btn btn-outline-danger" onclick="return confirm('@x.Name müşterisini silmek ister misiniz?')">Sil</a>
+                </td>
+                <td>
+                    <a href="/Customer/UpdateCustomer/@x.Id" class="btn btn-outline-success">Düzenle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-info" href="/Customer/AddCustomer/">Müşteri Ekle</a>
+
+

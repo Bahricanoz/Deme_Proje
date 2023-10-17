@@ -1,0 +1,26 @@
+﻿@model EntityLayer.Concrete.Job
+@{
+    ViewData["Title"] = "UpdateJob";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mt-3">
+    <h1>Meslek Güncelleme Sayfası</h1>
+</div>
+@using (Html.BeginForm("UpdateJob", "Job", FormMethod.Post))
+{
+    <div class="mt-3">
+        <label>Id:</label>
+        @Html.TextBoxFor(x=>x.JobId, new {@class="form-control",@readonly="readonly"})
+    </div>
+    <div class="mt-3">
+        <label>Meslek Adı:</label>
+        @Html.TextBoxFor(x=>x.Name, new {@class="form-control"})
+        <div style="color:red">
+            @Html.ValidationMessageFor(x=>x.Name)
+        </div>
+    </div>
+    <div class="mt-3">
+        <button class="btn btn-success">Kategori Güncelle</button>
+    </div>
+}

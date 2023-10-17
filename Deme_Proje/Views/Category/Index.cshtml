@@ -1,0 +1,31 @@
+﻿@using EntityLayer.Concrete;
+@model List<Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered mt-3">
+    <tr>
+        <th>#</th>
+        <th>Kategori</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
+    </tr>
+    <tbody>
+        @foreach(var x in Model)
+        {
+            <tr>
+                <td>@x.Id</td>
+                <td>@x.CategoryName</td>
+                <td>
+                    <a href="/Category/DeleteCategory/@x.Id" class="btn btn-outline-danger" onclick="return confirm('@x.CategoryName kategoriyi silmek ister misiniz?')">Sil</a>
+                </td>
+                <td>
+                    <a href="/Category/UpdateCategory/@x.Id" class="btn btn-outline-success">Düzenle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Category/AddCategory/" class="btn btn-info mt-2">Kategori Ekle</a>

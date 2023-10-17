@@ -1,0 +1,44 @@
+﻿@model EntityLayer.Concrete.Customer
+@{
+    ViewData["Title"] = "AddCustomer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mt-3">
+    <h1>Müşteri Ekleme Sayfası</h1>
+</div>
+<form method="post" class="form-group">
+    <table class="table table-bordered table-striped mt-3">
+        <tr>
+            <td>İsim:</td>
+            <td>
+                <input type="text" class="form-control" name="Name" />
+                <div style="color:red">
+                    @Html.ValidationMessageFor(x=>x.Name)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Şehir:</td>
+            <td>
+                <input type="text"  class="form-control" name="Country"/>
+                <div style="color:Red">
+                    @Html.ValidationMessageFor(x=>x.Country)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Meslek:</td>
+            <td>
+                @Html.DropDownListFor(x=>x.JobId, (List<SelectListItem>)ViewBag.job, "Lütfen bir meslek seçiniz", new {@class="form-control",@required="required"})
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button class="btn btn-info">Müşteri Ekle</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
